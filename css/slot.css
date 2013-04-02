@@ -558,12 +558,12 @@ body {
   -ms-transform: translate3d(0, 0, 145px);
   -o-transform: translate3d(0, 0, 145px);
   transform: translate3d(0, 0, 145px);
-  width: 446px;
+  width: 431px;
 }
 #slot .bottom-box > .side.front > .fix {
   position: absolute;
   top: 0;
-  right: -115px;
+  right: -130px;
   height: 145px;
   width: 10px;
   background: inherit;
@@ -572,18 +572,18 @@ body {
   content: '';
   position: absolute;
   top: 0;
-  left: -105px;
+  left: -120px;
   height: 10px;
-  width: 105px;
+  width: 120px;
   background: inherit;
 }
 #slot .bottom-box > .side.front > .fix:after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: -105px;
+  left: -120px;
   height: 105px;
-  width: 105px;
+  width: 120px;
   background: inherit;
 }
 #slot .bottom-box > .side.back {
@@ -619,9 +619,9 @@ body {
 #play {
   position: absolute;
   top: 10px;
-  right: -105px;
+  right: -120px;
   display: block;
-  width: 105px;
+  width: 120px;
   height: 30px;
   line-height: 30px;
   cursor: pointer;
@@ -643,12 +643,12 @@ body {
   left: 0;
 }
 #play > .side.top, #play > .side.bottom {
-  width: 105px;
+  width: 120px;
   height: 6px;
   top: 50%;
   left: 50%;
   margin-top: -3px;
-  margin-left: -52.5px;
+  margin-left: -60px;
   background: #aa0000;
 }
 #play > .side.top {
@@ -666,7 +666,7 @@ body {
   transform: rotateX(90deg) translate3d(0, 0, -15px);
 }
 #play > .side.front, #play > .side.back {
-  width: 105px;
+  width: 120px;
   height: 30px;
   background: #dd0000;
 }
@@ -700,18 +700,18 @@ body {
   background: #440000;
 }
 #play > .side.left {
-  -webkit-transform: rotateY(-90deg) translate3d(0, 0, -52.5px);
-  -moz-transform: rotateY(-90deg) translate3d(0, 0, -52.5px);
-  -ms-transform: rotateY(-90deg) translate3d(0, 0, -52.5px);
-  -o-transform: rotateY(-90deg) translate3d(0, 0, -52.5px);
-  transform: rotateY(-90deg) translate3d(0, 0, -52.5px);
+  -webkit-transform: rotateY(-90deg) translate3d(0, 0, -60px);
+  -moz-transform: rotateY(-90deg) translate3d(0, 0, -60px);
+  -ms-transform: rotateY(-90deg) translate3d(0, 0, -60px);
+  -o-transform: rotateY(-90deg) translate3d(0, 0, -60px);
+  transform: rotateY(-90deg) translate3d(0, 0, -60px);
 }
 #play > .side.right {
-  -webkit-transform: rotateY(90deg) translate3d(0, 0, -52.5px);
-  -moz-transform: rotateY(90deg) translate3d(0, 0, -52.5px);
-  -ms-transform: rotateY(90deg) translate3d(0, 0, -52.5px);
-  -o-transform: rotateY(90deg) translate3d(0, 0, -52.5px);
-  transform: rotateY(90deg) translate3d(0, 0, -52.5px);
+  -webkit-transform: rotateY(90deg) translate3d(0, 0, -60px);
+  -moz-transform: rotateY(90deg) translate3d(0, 0, -60px);
+  -ms-transform: rotateY(90deg) translate3d(0, 0, -60px);
+  -o-transform: rotateY(90deg) translate3d(0, 0, -60px);
+  transform: rotateY(90deg) translate3d(0, 0, -60px);
 }
 
 #display {

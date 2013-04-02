@@ -7,7 +7,114 @@
         <link rel="stylesheet" href="css/slot.css">
         <script src="js/jquery-1.8.1.min.js"></script>
         <!--<script src="https://raw.github.com/pixelass/html5slider/master/html5slider.js"></script>-->
-        <script src="js/jquery.slots.js"></script>
+        <script>
+        (function ($) {
+          "use strict";
+          // ready? .. set, go!
+
+          var transitionend = "webkitTransitionEnd transitionend";
+          var slots = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+          var winnerID = '?';
+          var winnerName = '';
+          var spin = [0, 0, 0, 0];
+          var result = [];
+          var rotateTimer;
+          var count = 0;
+          var allowPlay = true;
+
+          var endSpin = function (el, match, winnerNameBox, winnerIDBox) {
+            var ended = 0;
+            allowPlay = false;
+            el.on(transitionend, function () {
+              allowPlay = true;
+              ended++;
+              if(ended === 4) {
+                console.log(match);
+                winnerID = (1000*match[0] + 100*match[1] + 10*match[2] + match[3]).toString();
+                winnerIDBox.html(winnerID);
+                winnerName = 'Danny';
+                winnerNameBox.html(winnerName);
+              }
+            });
+          };
+
+          $(function () {
+            var frame = $('#page');
+            var winnerNameBox = $('#win');
+            var winnerIDBox = $('#credits');
+            var play = $('#play');
+            var wheels = $('.wheel');
+
+            var rotation = $('#rotation');
+            var perspective = $('#perspective');
+            frame.addClass('turn-360');
+            setTimeout(function () {
+              frame.removeClass('turn-360');
+            }, 3600);
+            rotation.on('change', function () {
+              var degree = $(this).val();
+              var view = perspective.val();
+              frame.css({
+                MozTransform: 'perspective(' + view + ') rotateY(' + degree + 'deg) translate3d(0,0,0)',
+                WebkitTransform: 'perspective(' + view + ') rotateY(' + degree + 'deg) translate3d(0,0,0)'
+              });
+            });
+            perspective.on('change', function () {
+              var degree = rotation.val();
+              var view = $(this).val();
+              frame.css({
+                MozTransform: 'perspective(' + view + ') rotateY(' + degree + 'deg) translate3d(0,0,0)',
+                WebkitTransform: 'perspective(' + view + ') rotateY(' + degree + 'deg) translate3d(0,0,0)'
+              });
+            });
+
+            wheels.each(function () {
+              var $this = $(this);
+              var zero = 0;
+              var spinPlus = 0;
+
+              play.on('click', function () {
+                if(allowPlay) {
+                  winnerIDBox.html('?');
+                  winnerNameBox.html('');
+                  var type = parseInt((Math.random() * 9), 10);
+                  var duration = parseInt((Math.random() * 10000), 10);
+                  if(duration < 1000) {
+                    duration *= 10;
+                  }
+                  if(duration < 5000) {
+                    duration += 5000;
+                  }
+                  spinPlus += 3600;
+                  var rotateWheel = (type + 1) * 36 + spinPlus;
+                  console.log((10-type) % 10);
+                  if(zero < 1) {
+                    duration = 0;
+                    zero += 1;
+                  }
+                  else {
+                    result.push(slots[type]);
+                    count++;
+                    if(count === 4) {
+                      endSpin(wheels, result, winnerNameBox, winnerIDBox);
+                      count = 0;
+                      result = [];
+                    }
+                  }
+                  $this.css({
+                    MozTransitionDuration: duration + 'ms',
+                    WebkitTransitionDuration: duration + 'ms',
+                    MozTransform: 'rotateX(-' + rotateWheel + 'deg)',
+                    WebkitTransform: 'rotateX(-' + rotateWheel + 'deg)'
+                  });
+                }
+              });
+            });
+
+            play.trigger('click');
+          });
+        }(jQuery));
+        </script>
     </head>
 
     <body>
@@ -24,8 +131,8 @@
             <div id="slot" class="slot-wrapper">
                 <section class="top-box">
                     <div id="display">
-                        <div id="credits">0</div>
-                        <div id="win">0</div>
+                        <div id="credits"></div>
+                        <div id="win"></div>
                     </div>
                     <div class="side top"></div>
                     <div class="side bottom"></div>
@@ -136,7 +243,7 @@
                             <div class="side bottom"></div>
                             <div class="side left"></div>
                             <div class="side right"></div>
-                            <div class="side front">lucky</div>
+                            <div class="side front">lucky!</div>
                         </div>
                     </div>
                     <div class="side back"></div>
